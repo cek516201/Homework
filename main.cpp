@@ -8,7 +8,7 @@ int main(int argc, char* args[])
   int b = 0;
 
   cin >> a >> b;
-  cout << a + b << "\n";
+  cout << a - b << "\n";
 
   return 0;
 }
