@@ -37,16 +37,19 @@ bool Game::init(const char *title, int xpos, int ypos,  int width, int height, i
   m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
   SDL_FreeSurface(pTempSurface);
 
+  // 원본상자 설정
+  m_sourceRectangle.x = 0; // 시작 x좌표
+  m_sourceRectangle.y = 0; // 시작 y좌표
   SDL_QueryTexture(m_pTexture, NULL, NULL, 
-  &m_sourceRectangle.w, &m_sourceRectangle.h); // 원본상자 크기
+  &m_sourceRectangle.w, &m_sourceRectangle.h); // 너비와 높이
 
-  m_destinationRectangle.w = m_sourceRectangle.w; // 대상상자 크기
-  m_destinationRectangle.h = m_sourceRectangle.h;
-
-  m_sourceRectangle.x = 0;
-  m_sourceRectangle.y = 0;
-  m_destinationRectangle.x = 50; // 그릴위치 설정
-  m_destinationRectangle.y = 50;
+  // 대상상자 설정
+  m_destinationRectangle.x = 50; // 시작 x좌표
+  m_destinationRectangle.y = 50; // 시작 y좌표
+  m_destinationRectangle.w = m_sourceRectangle.w; // 너비
+  m_destinationRectangle.h = m_sourceRectangle.h; // 높이
+ 
+  
 
 
 
@@ -54,16 +57,17 @@ bool Game::init(const char *title, int xpos, int ypos,  int width, int height, i
   m_pTexture2 = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface2);
   SDL_FreeSurface(pTempSurface2);
 
+  // 원본상자 설정
+  m_sourceRectangle2.x = 0; // 시작 x좌표
+  m_sourceRectangle2.y = 0; // 시작 y좌표
   SDL_QueryTexture(m_pTexture2, NULL, NULL, 
-  &m_sourceRectangle2.w, &m_sourceRectangle2.h); // 원본상자 크기
+  &m_sourceRectangle2.w, &m_sourceRectangle2.h); // 너비와 높이
 
-  m_destinationRectangle2.w = m_sourceRectangle2.w; // 대상상자 크기
-  m_destinationRectangle2.h = m_sourceRectangle2.h;
-
-  m_sourceRectangle2.x = 0;
-  m_sourceRectangle2.y = 0;
-  m_destinationRectangle2.x = 300; // 그릴위치 설정
-  m_destinationRectangle2.y = 50;
+  // 대상상자 설정
+  m_destinationRectangle2.x = 300; // 시작 x좌표
+  m_destinationRectangle2.y = 50; // 시작 y좌표
+  m_destinationRectangle2.w = m_sourceRectangle2.w; // 너비
+  m_destinationRectangle2.h = m_sourceRectangle2.h; // 높이
 
   
 
