@@ -31,23 +31,23 @@ bool Game::init(const char *title, int xpos, int ypos,  int width, int height, i
 
   m_bRunning = true;
 
-  SDL_Surface* pTempSurface = SDL_LoadBMP("Assets/rider.bmp");
+  SDL_Surface* pTempSurface = SDL_LoadBMP("Assets/animate.bmp");
   m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
   SDL_FreeSurface(pTempSurface);
 
   // 원본상자 설정
   m_sourceRectangle.x = 0; // 시작 x좌표
   m_sourceRectangle.y = 0; // 시작 y좌표
-  SDL_QueryTexture(m_pTexture, NULL, NULL, 
-  &m_sourceRectangle.w, &m_sourceRectangle.h); // 너비와 높이
+  m_sourceRectangle.w = 128;
+  m_sourceRectangle.h = 82;
+  //SDL_QueryTexture(m_pTexture, NULL, NULL, 
+  //&m_sourceRectangle.w, &m_sourceRectangle.h); // 너비와 높이
 
   // 대상상자 설정
-  m_destinationRectangle.x = 10; // 시작 x좌표
-  m_destinationRectangle.y = 10; // 시작 y좌표
-  m_destinationRectangle.w = 580;
-  m_destinationRectangle.h = 280;
-  //m_destinationRectangle.w = m_sourceRectangle.w; // 너비
-  //m_destinationRectangle.h = m_sourceRectangle.h; // 높이
+  m_destinationRectangle.x = 0; // 시작 x좌표
+  m_destinationRectangle.y = 0; // 시작 y좌표
+  m_destinationRectangle.w = m_sourceRectangle.w; // 너비
+  m_destinationRectangle.h = m_sourceRectangle.h; // 높이
  
   return true;
 }
