@@ -64,7 +64,7 @@ void Game::render()
 
 void Game::update()
 {
-
+  m_sourceRectangle.x = 128 * ( (SDL_GetTicks() / 100) % 6 );
 }
 
 bool Game::running()
