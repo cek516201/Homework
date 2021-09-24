@@ -24,10 +24,6 @@ private:
     SDL_Texture* m_pTexture; 
     SDL_Rect m_sourceRectangle; // 원본 상자
     SDL_Rect m_destinationRectangle; // 대상 상자
-
-    SDL_Texture* m_pTexture2; 
-    SDL_Rect m_sourceRectangle2; // 원본 상자
-    SDL_Rect m_destinationRectangle2; // 대상 상자
 };
 
 #endif
