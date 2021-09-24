@@ -36,8 +36,8 @@ bool Game::init(const char *title, int xpos, int ypos,  int width, int height, i
   SDL_FreeSurface(pTempSurface);
 
   // 원본상자 설정
-  m_sourceRectangle.x = 0; // 시작 x좌표
-  m_sourceRectangle.y = 0; // 시작 y좌표
+  m_sourceRectangle.x = 50; // 시작 x좌표
+  m_sourceRectangle.y = 50; // 시작 y좌표
   m_sourceRectangle.w = 50;
   m_sourceRectangle.h = 50;
   //SDL_QueryTexture(m_pTexture, NULL, NULL, 
