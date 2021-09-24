@@ -44,8 +44,8 @@ bool Game::init(const char *title, int xpos, int ypos,  int width, int height, i
   //&m_sourceRectangle.w, &m_sourceRectangle.h); // 너비와 높이
 
   // 대상상자 설정
-  m_destinationRectangle.x = 0; // 시작 x좌표
-  m_destinationRectangle.y = 0; // 시작 y좌표
+  m_destinationRectangle.x = 50; // 시작 x좌표
+  m_destinationRectangle.y = 50; // 시작 y좌표
   m_destinationRectangle.w = m_sourceRectangle.w; // 너비
   m_destinationRectangle.h = m_sourceRectangle.h; // 높이
  
