@@ -1,3 +1,6 @@
+// update를 수정하여 고양이가 더 빠르게 달리도록 수정했고
+// SDL_RenderCopyEx를 사용하여 고양이가 반대편으로 달리도록 수정했습니다
+
 #include "Game.h"
 #include "SDL_image.h"
 
@@ -32,7 +35,7 @@ bool Game::init(const char *title, int xpos, int ypos,  int width, int height, i
 
   m_bRunning = true;
 
-  SDL_Surface* pTempSurface = IMG_Load("Assets/animate.png");
+  SDL_Surface* pTempSurface = IMG_Load("Assets/animate-alpha.png");
   m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
   SDL_FreeSurface(pTempSurface);
 
@@ -57,15 +60,16 @@ void Game::render()
 {
    SDL_RenderClear(m_pRenderer);
 
-   SDL_RenderCopy(m_pRenderer, m_pTexture,
-   &m_sourceRectangle, &m_destinationRectangle);
+   SDL_RenderCopyEx(m_pRenderer, m_pTexture,
+   &m_sourceRectangle, &m_destinationRectangle,
+   0, NULL, SDL_FLIP_HORIZONTAL);
    
    SDL_RenderPresent(m_pRenderer);
 }
 
 void Game::update()
 {
-  m_sourceRectangle.x = 128 * ( (SDL_GetTicks() / 100) % 6 );
+  m_sourceRectangle.x = 128 * ( (SDL_GetTicks() / 50) % 6 );
 }
 
 bool Game::running()
