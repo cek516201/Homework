@@ -2,6 +2,7 @@
 #define __Game__
 
 #include "SDL.h"
+#include "TextureManager.h"
 
 class Game
 {
@@ -19,11 +20,13 @@ public:
 private:
     SDL_Window* m_pWindow;
     SDL_Renderer* m_pRenderer;
+
     bool m_bRunning;
-    
-    SDL_Texture* m_pTexture; 
-    SDL_Rect m_sourceRectangle; // 원본 상자
-    SDL_Rect m_destinationRectangle; // 대상 상자
+
+    TextureManager m_textureManager;
+
+    int m_currentRow = 0;
+    int m_currentFrame;
 };
 
 #endif

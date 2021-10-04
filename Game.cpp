@@ -1,13 +1,11 @@
-// update를 수정하여 고양이가 더 빠르게 달리도록 수정했고
-// SDL_RenderCopyEx를 사용하여 고양이가 반대편으로 달리도록 수정했습니다
+// 가독성 향상을 위해 코드 일부 수정
 
 #include "Game.h"
 #include "SDL_image.h"
 
 bool Game::init(const char *title, int xpos, int ypos,  int width, int height, int flags) 
 {
-  /*
-  if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
+  /* if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
   {
     m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
 
@@ -32,46 +30,33 @@ bool Game::init(const char *title, int xpos, int ypos,  int width, int height, i
   else
   {
     return false; // SDL 초기화 실패
-  }
-  */
+  } */
   if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
   {
     return false; // SDL 초기화 실패
   }
-  m_pWindow = SDL_CreateWindow(title, xpos, ypos, width,height, flags);
 
+  m_pWindow = SDL_CreateWindow(title, xpos, ypos, width,height, flags);
   if (m_pWindow == 0)
   {
     return false; // 윈도우 생성 실패
   }
+
   m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
-  
   if (m_pRenderer == 0)
   {
     return false; // 랜더러 생성 실패
   }
-  SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 
-  m_bRunning = true;
+  if( m_textureManager.load("Assets/animate-alpha.png", "animate", m_pRenderer) == false )
+  {
+    return false;
+  }
 
-  SDL_Surface* pTempSurface = IMG_Load("Assets/animate-alpha.png");
-  m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-  SDL_FreeSurface(pTempSurface);
+   m_bRunning = true;
 
-  // 원본상자 설정
-  m_sourceRectangle.x = 0; // 시작 x좌표
-  m_sourceRectangle.y = 0; // 시작 y좌표
-  m_sourceRectangle.w = 128;
-  m_sourceRectangle.h = 82;
-  //SDL_QueryTexture(m_pTexture, NULL, NULL, 
-  //&m_sourceRectangle.w, &m_sourceRectangle.h); // 너비와 높이
+   SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 
-  // 대상상자 설정
-  m_destinationRectangle.x = 0; // 시작 x좌표
-  m_destinationRectangle.y = 0; // 시작 y좌표
-  m_destinationRectangle.w = m_sourceRectangle.w; // 너비
-  m_destinationRectangle.h = m_sourceRectangle.h; // 높이
- 
   return true;
 }
 
@@ -79,16 +64,16 @@ void Game::render()
 {
    SDL_RenderClear(m_pRenderer);
 
-   SDL_RenderCopyEx(m_pRenderer, m_pTexture,
-   &m_sourceRectangle, &m_destinationRectangle,
-   0, NULL, SDL_FLIP_HORIZONTAL);
+   m_textureManager.draw("animate", 0, 0, 128, 82, m_pRenderer, SDL_FLIP_NONE);
+   m_textureManager.drawFrame("animate", 100, 100, 128, 82, m_currentRow, m_currentFrame, m_pRenderer, SDL_FLIP_NONE);
    
    SDL_RenderPresent(m_pRenderer);
 }
 
 void Game::update()
 {
-  m_sourceRectangle.x = 128 * ( (SDL_GetTicks() / 50) % 6 );
+  // SDL_GetTicks()는 밀리세컨드이므로 10프레임
+  m_currentFrame = SDL_GetTicks() / 100 % 6;
 }
 
 bool Game::running()
@@ -107,6 +92,29 @@ void Game::handleEvents()
     case SDL_QUIT:
       m_bRunning = false;
       break;
+
+    
+    case SDL_KEYDOWN:
+      switch(event.key.keysym.sym)
+      {
+        case SDLK_LEFT: // 왼쪽키
+        //destRect.x--;
+        break;
+        
+        case SDLK_RIGHT: // 오른쪽키
+        //destRect.x++;
+        break;
+        
+        case SDLK_UP: // 위쪽키
+        //destRect.y--;
+        break;
+
+        case SDLK_DOWN: // 아래쪽키
+        //destRect.y++;
+        break;
+      }
+      break;
+    
 
     default:
       break;
