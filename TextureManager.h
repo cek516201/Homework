@@ -9,10 +9,25 @@
 
 using namespace std;
 
+class TextureManager;
+
+typedef TextureManager TheTextureManager;
+
 class TextureManager
 {
-public:
+private:
   TextureManager() {}
+  static TextureManager* s_pInstance;
+
+public:
+  static TextureManager* Instance()
+  {
+    if(s_pInstance == 0)
+      s_pInstance = new TextureManager();
+
+    return s_pInstance;
+  }
+
   ~TextureManager() {}
 
   bool load(string fileName, string id, SDL_Renderer* pRenderer);

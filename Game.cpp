@@ -48,9 +48,9 @@ bool Game::init(const char *title, int xpos, int ypos,  int width, int height, i
     return false; // 랜더러 생성 실패
   }
 
-  if( m_textureManager.load("Assets/animate-alpha.png", "animate", m_pRenderer) == false )
+  if( TheTextureManager::Instance()->load("Assets/animate-alpha.png", "animate", m_pRenderer) == false )
   {
-    return false;
+    return false; // 이미지 로드 실패
   }
 
    m_bRunning = true;
@@ -64,8 +64,8 @@ void Game::render()
 {
    SDL_RenderClear(m_pRenderer);
 
-   m_textureManager.draw("animate", 0, 0, 128, 82, m_pRenderer, SDL_FLIP_NONE);
-   m_textureManager.drawFrame("animate", 100, 100, 128, 82, m_currentRow, m_currentFrame, m_pRenderer, SDL_FLIP_NONE);
+   TheTextureManager::Instance()->draw("animate", 0, 0, 128, 82, m_pRenderer, SDL_FLIP_NONE);
+   TheTextureManager::Instance()->drawFrame("animate", 100, 100, 128, 82, m_currentRow, m_currentFrame, m_pRenderer, SDL_FLIP_NONE);
    
    SDL_RenderPresent(m_pRenderer);
 }

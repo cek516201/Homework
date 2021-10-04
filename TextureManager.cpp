@@ -2,8 +2,11 @@
 
 #include "TextureManager.h"
 
+TextureManager* TextureManager::s_pInstance = 0;
+
 bool TextureManager::load(string fileName, string id, SDL_Renderer* pRenderer)
 {
+  // 여기에 에러가 있다는데 어떻게 해야하는건지 잘 모르겠습니다.
   SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
   if(pTempSurface == 0)
   {
@@ -14,7 +17,7 @@ bool TextureManager::load(string fileName, string id, SDL_Renderer* pRenderer)
   /* if(pTexture != 0)
   {
     m_textureMap[id] = pTexture;
-    return true; // 성공
+    return true;
   } */
   if(pTexture == 0)
   {

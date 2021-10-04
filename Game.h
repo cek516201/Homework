@@ -23,8 +23,6 @@ private:
 
     bool m_bRunning;
 
-    TextureManager m_textureManager;
-
     int m_currentRow = 0;
     int m_currentFrame;
 };
