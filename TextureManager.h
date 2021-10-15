@@ -25,7 +25,7 @@ public:
     return s_pInstance;
   }
 
-  ~TextureManager() {}
+  ~TextureManager() {};
 
   bool load(string fileName, string id, SDL_Renderer* pRenderer);
 

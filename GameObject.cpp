@@ -8,8 +8,6 @@ void GameObject::load(int x, int y, int width, int height, string textureID)
   m_width = width;
   m_height = height;
   m_textureID = textureID;
-  m_currentFrame = 0;
-  m_currentRow = 0;
 }
 
 void GameObject::draw(SDL_Renderer* pRenderer)
@@ -19,5 +17,8 @@ void GameObject::draw(SDL_Renderer* pRenderer)
 
 void GameObject::update()
 {
+  // SDL_GetTicks()는 밀리세컨드이므로 10프레임
+  m_currentFrame = SDL_GetTicks() / 100 % 6;
+  
   m_x++;
 }

@@ -2,7 +2,10 @@
 #define _Game_H_
 
 #include "SDL.h"
-#include "Player.h"
+#include <vector>
+#include "GameObject.h"
+
+using namespace std;
 
 class Game
 {
@@ -18,16 +21,12 @@ public:
     void clean();
 
 private:
-    GameObject m_gameobject;
-    Player m_player;
+    vector<GameObject*> m_gameObjects;
 
     SDL_Window* m_pWindow = 0;
     SDL_Renderer* m_pRenderer = 0;
 
     bool m_bRunning = false;
-
-    int m_currentRow = 0;
-    int m_currentFrame = 0;
 };
 
 #endif
