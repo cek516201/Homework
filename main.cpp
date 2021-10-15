@@ -1,3 +1,5 @@
+// 완료한 단계 : 7주차 상속
+
 #include "Game.h"
 
 Game* g_game = 0;
