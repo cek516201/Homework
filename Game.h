@@ -1,8 +1,8 @@
-#ifndef __Game__
-#define __Game__
+#ifndef _Game_H_
+#define _Game_H_
 
 #include "SDL.h"
-#include "TextureManager.h"
+#include "Player.h"
 
 class Game
 {
@@ -18,13 +18,16 @@ public:
     void clean();
 
 private:
-    SDL_Window* m_pWindow;
-    SDL_Renderer* m_pRenderer;
+    GameObject m_gameobject;
+    Player m_player;
 
-    bool m_bRunning;
+    SDL_Window* m_pWindow = 0;
+    SDL_Renderer* m_pRenderer = 0;
+
+    bool m_bRunning = false;
 
     int m_currentRow = 0;
-    int m_currentFrame;
+    int m_currentFrame = 0;
 };
 
 #endif
