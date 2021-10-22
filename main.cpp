@@ -1,22 +1,31 @@
 // 완료한 단계 : 7주차 상속, 다형성
+//              8주차 유일객체 Game
 
+#include <iostream>
 #include "Game.h"
 
-Game* g_game = 0;
+using namespace std;
 
 int main(int argc, char* argv[])
 {
-    g_game = new Game();
-    g_game->init("Test", 100, 100, 600, 300, 0);
-    
-    while (g_game->running())
+    if( TheGame::Instance()->init("Chapter 1", 100, 100, 640, 480, false) )
     {
-        g_game->handleEvents();
-        g_game->update();
-        g_game->render();
+      while( TheGame::Instance()->running() )
+      {
+        TheGame::Instance()->handleEvents();
+        TheGame::Instance()->update();
+        TheGame::Instance()->render();
         SDL_Delay(10);
+      }
     }
-    
-    g_game->clean();
+    else
+    {
+      cout << "game init failure " << SDL_GetError() << endl;
+      
+      return -1;
+    }
+
+    TheGame::Instance()->clean();
+
     return 0;
 }
