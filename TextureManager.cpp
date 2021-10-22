@@ -12,7 +12,6 @@ bool TextureManager::load(string fileName, string id, SDL_Renderer* pRenderer)
   }
 
   SDL_Texture* pTexture = SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
- 
   if(pTexture == 0)
   {
     return false; // 텍스쳐 생성 실패
@@ -42,6 +41,5 @@ void TextureManager::drawFrame(string id, int x, int y, int width, int height, i
   destRect.w = width; // 너비
   destRect.h = height; // 높이
 
-  SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect,
-   0, NULL, flip);
+  SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, NULL, flip);
 }

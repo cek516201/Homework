@@ -5,8 +5,6 @@
 #include <vector>
 #include "GameObject.h"
 
-using namespace std;
-
 class Game;
 
 typedef Game TheGame;

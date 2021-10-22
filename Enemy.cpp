@@ -1,15 +1,16 @@
-#include "Player.h"
+#include "Enemy.h"
 #include "SDL.h"
 
-void Player::draw()
+void Enemy::draw()
 {
   SDLGameObject::draw();
 }
 
-void Player::update()
+void Enemy::update()
 {
   // SDL_GetTicks()는 밀리세컨드이므로 10프레임
   m_currentFrame = SDL_GetTicks() / 100 % 6;
 
-  m_x--;
+  m_x++;
+  m_y++;
 }
