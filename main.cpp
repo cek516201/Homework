@@ -1,5 +1,6 @@
 // 완료한 단계 : 7주차 상속, 다형성
 //              8주차 유일객체 Game, 추상클래스
+//              9주차 Vector2D
 
 #include <iostream>
 #include "Game.h"
