@@ -1,5 +1,4 @@
 #include "Enemy.h"
-#include "SDL.h"
 
 void Enemy::draw()
 {

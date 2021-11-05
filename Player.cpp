@@ -1,5 +1,4 @@
 #include "Player.h"
-#include "SDL.h"
 #include "InputHandler.h"
 
 void Player::draw()
