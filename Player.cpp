@@ -21,15 +21,20 @@ void Player::handleInput()
   if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
   {
     m_velocity.setX(-2);
+    m_currentFrame = SDL_GetTicks() / 100 % 6;
     flip = SDL_FLIP_HORIZONTAL;
   }
   else if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
   {
     m_velocity.setX(2);
+    m_currentFrame = SDL_GetTicks() / 100 % 6;
     flip = SDL_FLIP_NONE;
   }
   else
+  {
     m_velocity.setX(0);
+    m_currentFrame = 0;    
+  }
 
   if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
     m_velocity.setY(-2);
