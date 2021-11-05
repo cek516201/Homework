@@ -32,7 +32,7 @@ public:
   // 애니메이션 그리기
   void drawFrame(string id, int x, int y, int width, int height,
   int currentRow, int currentFrame,
-  SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
+  SDL_Renderer* pRenderer, SDL_RendererFlip flip);
 
 private:
   map<string, SDL_Texture*> m_textureMap;

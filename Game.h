@@ -32,6 +32,7 @@ public:
     bool running();
     void handleEvents();
     void clean();
+    void quit() { m_bRunning = false; }
 
     SDL_Renderer* getRenderer() const { return m_pRenderer; }
 

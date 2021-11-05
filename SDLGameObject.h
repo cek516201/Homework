@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "Vector2D.h"
+#include "SDL.h"
 
 class SDLGameObject : public GameObject
 {
@@ -10,7 +11,7 @@ public:
   SDLGameObject(const LoaderParams* pParams); // : GameObject(pParams)
   virtual ~SDLGameObject() {}
 
-  virtual void draw();
+  virtual void draw(SDL_RendererFlip flip = SDL_FLIP_NONE);
   virtual void update();
   virtual void clean() {}
 
