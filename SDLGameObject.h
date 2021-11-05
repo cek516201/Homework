@@ -16,6 +16,9 @@ public:
 
 protected:
   Vector2D m_position; // :  m_position(pParams->getX(),pParams->getY())
+  Vector2D m_velocity; // :  m_velocity(0, 0)
+  Vector2D m_acceleration; // :  m_acceleration(0, 0)
+  
   int m_width;
   int m_height;
   int m_currentRow;
