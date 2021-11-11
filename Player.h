@@ -14,6 +14,7 @@ public:
 
 private:
   SDL_RendererFlip flip = SDL_FLIP_NONE;
+  int frameCount = 0;
 };
 
 #endif
